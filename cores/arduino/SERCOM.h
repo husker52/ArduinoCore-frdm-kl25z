@@ -19,7 +19,7 @@
 #ifndef _SERCOM_CLASS_
 #define _SERCOM_CLASS_
 
-#include "sam.h"
+//#include "sam.h"
 
 #define SERCOM_FREQ_REF 48000000
 

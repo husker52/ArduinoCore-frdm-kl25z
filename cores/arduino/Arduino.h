@@ -45,7 +45,8 @@ extern "C"{
 #endif // __cplusplus
 
 // Include Atmel headers
-#include "sam.h"
+// #include "sam.h"
+#include "MKL25Z4.h"
 
 #include "wiring_constants.h"
 
@@ -125,9 +126,9 @@ void loop( void ) ;
 #endif
 
 // USB Device
-#include "USB/USBDesc.h"
-#include "USB/USBCore.h"
-#include "USB/USBAPI.h"
-#include "USB/USB_host.h"
+//#include "USB/USBDesc.h"
+//#include "USB/USBCore.h"
+//#include "USB/USBAPI.h"
+//#include "USB/USB_host.h"
 
 #endif // Arduino_h

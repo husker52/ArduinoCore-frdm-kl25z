@@ -19,7 +19,8 @@
 #pragma once
 
 #include <stdint.h>
-#include "sam.h"
+//#include "sam.h"
+#include "stubs.h"
 
 #ifdef __cplusplus
 extern "C" {
