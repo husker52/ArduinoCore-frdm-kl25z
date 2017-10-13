@@ -34,8 +34,11 @@ extern const uint32_t __text_start__;
 #define APP_START 0x00002004
 #endif
 
+// TODO: FIX THIS
 static inline bool nvmReady(void) {
+#if 0
         return NVMCTRL->INTFLAG.reg & NVMCTRL_INTFLAG_READY;
+#endif 
 }
 
 __attribute__ ((long_call, section (".ramfunc")))
@@ -53,9 +56,12 @@ static void banzai() {
 	// Erase application
 	while (!nvmReady())
 		;
+// TODO: FIX THIS
+#if 0
 	NVMCTRL->STATUS.reg |= NVMCTRL_STATUS_MASK;
 	NVMCTRL->ADDR.reg  = (uintptr_t)&NVM_MEMORY[APP_START / 4];
 	NVMCTRL->CTRLA.reg = NVMCTRL_CTRLA_CMD_ER | NVMCTRL_CTRLA_CMDEX_KEY;
+#endif
 	while (!nvmReady())
 		;
 

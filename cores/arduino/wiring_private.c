@@ -85,7 +85,8 @@ int pinPeripheral( uint32_t ulPin, EPioType ulPeripheral )
                                                                     PORT_WRCONFIG_WRPINCFG |
                                                                     PORT_WRCONFIG_PINMASK( g_APinDescription[ulPin].ulPin - 16 ) ;
       }
-#else
+#endif
+#if 0
       if ( g_APinDescription[ulPin].ulPin & 1 ) // is pin odd?
       {
         uint32_t temp ;

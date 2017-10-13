@@ -22,11 +22,6 @@
 extern "C" {
 #endif
 
-/*
- * System Core Clock is at 1MHz (8MHz/8) at Reset.
- * It is switched to 48MHz in the Reset Handler (startup.c)
- */
-uint32_t SystemCoreClock=1000000ul ;
 
 /*
 void calibrateADC()
@@ -71,6 +66,8 @@ void init( void )
 //  // Clock EIC for I/O interrupts
 //  PM->APBAMASK.reg |= PM_APBAMASK_EIC ;
 
+// TODO: fix this
+#if 0
   // Clock SERCOM for Serial
   PM->APBCMASK.reg |= PM_APBCMASK_SERCOM0 | PM_APBCMASK_SERCOM1 | PM_APBCMASK_SERCOM2 | PM_APBCMASK_SERCOM3 | PM_APBCMASK_SERCOM4 | PM_APBCMASK_SERCOM5 ;
 
@@ -121,6 +118,7 @@ void init( void )
   while ( DAC->STATUS.bit.SYNCBUSY == 1 ); // Wait for synchronization of registers between the clock domains
   DAC->CTRLB.reg = DAC_CTRLB_REFSEL_AVCC | // Using the 3.3V reference
                    DAC_CTRLB_EOEN ;        // External Output Enable (Vout)
+#endif
 }
 
 #ifdef __cplusplus

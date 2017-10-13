@@ -33,6 +33,7 @@ static void __initialize()
   memset(ISRcallback, 0, sizeof(ISRcallback));
   nints = 0;
 
+#if 0
   NVIC_DisableIRQ(EIC_IRQn);
   NVIC_ClearPendingIRQ(EIC_IRQn);
   NVIC_SetPriority(EIC_IRQn, 0);
@@ -50,6 +51,7 @@ static void __initialize()
   // Enable EIC
   EIC->CTRL.bit.ENABLE = 1;
   while (EIC->STATUS.bit.SYNCBUSY == 1) { }
+#endif
 }
 
 /*
@@ -74,7 +76,7 @@ void attachInterrupt(uint32_t pin, voidFuncPtr callback, uint32_t mode)
     __initialize();
     enabled = 1;
   }
-
+#if 0
   // Enable wakeup capability on pin in case being used during sleep
   uint32_t inMask = 1 << in;
   EIC->WAKEUP.reg |= inMask;
@@ -140,6 +142,8 @@ void attachInterrupt(uint32_t pin, voidFuncPtr callback, uint32_t mode)
   }
   // Enable the interrupt
   EIC->INTENSET.reg = EIC_INTENSET_EXTINT(inMask);
+
+#endif
 }
 
 /*
@@ -154,7 +158,7 @@ void detachInterrupt(uint32_t pin)
 #endif 
   if (in == NOT_AN_INTERRUPT || in == EXTERNAL_INT_NMI)
     return;
-
+#if 0
   uint32_t inMask = 1 << in;
   EIC->INTENCLR.reg = EIC_INTENCLR_EXTINT(inMask);
   
@@ -176,11 +180,13 @@ void detachInterrupt(uint32_t pin)
     ISRcallback[current] = ISRcallback[current+1];
   }
   nints--;
+#endif
 }
 
 /*
  * External Interrupt Controller NVIC Interrupt Handler
  */
+#if 0
 void EIC_Handler(void)
 {
   // Calling the routine directly from -here- takes about 1us
@@ -198,3 +204,4 @@ void EIC_Handler(void)
     }
   }
 }
+#endif

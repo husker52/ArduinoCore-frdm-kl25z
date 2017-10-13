@@ -41,7 +41,8 @@ unsigned long micros( void )
   uint32_t ticks, ticks2;
   uint32_t pend, pend2;
   uint32_t count, count2;
-
+// TODO: FIX THIS
+#if 0
   ticks2  = SysTick->VAL;
   pend2   = !!(SCB->ICSR & SCB_ICSR_PENDSTSET_Msk)  ;
   count2  = _ulTickCount ;
@@ -59,6 +60,7 @@ unsigned long micros( void )
   return ((count+pend) * 1000) + (((SysTick->LOAD  - ticks)*(1048576/(VARIANT_MCK/1000000)))>>20) ;
   // this is an optimization to turn a runtime division into two compile-time divisions and
   // a runtime multiplication and shift, saving a few cycles
+#endif
 }
 
 void delay( unsigned long ms )

@@ -37,9 +37,12 @@ uint32_t pulseIn(uint32_t pin, uint32_t state, uint32_t timeout)
   // convert the timeout from microseconds to a number of times through
   // the initial loop; it takes (roughly) 13 clock cycles per iteration.
   uint32_t maxloops = microsecondsToClockCycles(timeout) / 13;
-
+  // TODO: fix this
+#if 0
   uint32_t width = countPulseASM(&(PORT->Group[p.ulPort].IN.reg), bit, stateMask, maxloops);
-
+#else
+  uint32_t width = 0;
+#endif
   // convert the reading to microseconds. The loop has been determined
   // to be 13 clock cycles long and have about 16 clocks between the edge
   // and the start of the loop. There will be some error introduced by

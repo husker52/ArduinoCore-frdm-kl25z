@@ -22,6 +22,8 @@
  extern "C" {
 #endif
 
+// TODO: FIX THIS
+#if 0
 void pinMode( uint32_t ulPin, uint32_t ulMode )
 {
   // Handle the case the pin isn't usable as PIO
@@ -117,6 +119,7 @@ int digitalRead( uint32_t ulPin )
 
   return LOW ;
 }
+#endif
 
 #ifdef __cplusplus
 }

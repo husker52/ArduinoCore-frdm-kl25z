@@ -134,9 +134,9 @@ typedef enum _EPWMChannel
 typedef enum _EPortType
 {
   NOT_A_PORT=-1,
-  PORTA=0,
+/*  PORTA=0,
   PORTB=1,
-  PORTC=2,
+  PORTC=2, */
 } EPortType ;
 
 typedef enum

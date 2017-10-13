@@ -23,6 +23,8 @@
 extern "C" {
 #endif
 
+// TODO: FIX THIS
+#if 0
 static int _readResolution = 10;
 static int _ADCResolution = 10;
 static int _writeResolution = 8;
@@ -311,6 +313,7 @@ void analogWrite(uint32_t pin, uint32_t value)
     digitalWrite(pin, HIGH);
   }
 }
+#endif
 
 #ifdef __cplusplus
 }

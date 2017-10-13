@@ -47,6 +47,7 @@ extern "C"{
 // Include Atmel headers
 // #include "sam.h"
 #include "MKL25Z4.h"
+#include "system_MKL25Z4.h"
 
 #include "wiring_constants.h"
 

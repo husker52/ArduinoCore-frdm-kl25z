@@ -64,9 +64,10 @@ compiler.S.extra_flags=
 compiler.ar.extra_flags=
 compiler.elf2hex.extra_flags=
 
-runtime.tools.kl25_sc_rev10.path=/home/riensche/Arduino/hardware/tools/kl25_sc_rev10
-compiler.arm.cmsis.c.flags="-I{runtime.tools.kl25_sc_rev10.path}/klxx-sc-baremetal/src/cpu/headers"
-compiler.arm.cmsis.ldflags="-larm_cortexM0l_math"
+runtime.tools.kl25_sc_rev10.path={runtime.hardware.path}/../tools/kl25_sc_rev10
+compiler.arm.cmsis.c.flags="-I{build.core.path}/core/include" "-I{runtime.tools.kl25_sc_rev10.path}/klxx-sc-baremetal/src/cpu/headers/CMSIS/MKL25Z4/Include" "-I{runtime.tools.kl25_sc_rev10.path}/klxx-sc-baremetal/src/cpu" 
+compiler.arm.cmsis.ldflags=
+#compiler.arm.cmsis.ldflags="-larm_cortexM0l_math"
 
 # USB Flags
 # ---------
