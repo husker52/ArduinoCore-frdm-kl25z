@@ -49,6 +49,9 @@ extern "C"{
 #include "MKL25Z4.h"
 #include "system_MKL25Z4.h"
 
+extern FGPIO_Type *FGPIO[];
+extern PORT_Type *PORT[];
+
 #include "wiring_constants.h"
 
 #define clockCyclesPerMicrosecond() ( SystemCoreClock / 1000000L )

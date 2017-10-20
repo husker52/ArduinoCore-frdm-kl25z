@@ -20,6 +20,7 @@
 
 #include <stdint.h>
 //#include "sam.h"
+#include "MKL25Z4.h"
 #include "stubs.h"
 
 #ifdef __cplusplus
@@ -61,37 +62,27 @@ typedef enum _EAnalogChannel
 typedef enum _ETCChannel
 {
   NOT_ON_TIMER=-1,
-  TCC0_CH0 = (0<<8)|(0),
-  TCC0_CH1 = (0<<8)|(1),
-  TCC0_CH2 = (0<<8)|(2),
-  TCC0_CH3 = (0<<8)|(3),
-  TCC0_CH4 = (0<<8)|(0), // Channel 4 is 0!
-  TCC0_CH5 = (0<<8)|(1), // Channel 5 is 1!
-  TCC0_CH6 = (0<<8)|(2), // Channel 6 is 2!
-  TCC0_CH7 = (0<<8)|(3), // Channel 7 is 3!
-  TCC1_CH0 = (1<<8)|(0),
-  TCC1_CH1 = (1<<8)|(1),
-  TCC1_CH2 = (1<<8)|(0), // Channel 2 is 0!
-  TCC1_CH3 = (1<<8)|(1), // Channel 3 is 1!
-  TCC2_CH0 = (2<<8)|(0),
-  TCC2_CH1 = (2<<8)|(1),
-  TCC2_CH2 = (2<<8)|(0), // Channel 2 is 0!
-  TCC2_CH3 = (2<<8)|(1), // Channel 3 is 1!
-  TC3_CH0  = (3<<8)|(0),
-  TC3_CH1  = (3<<8)|(1),
-  TC4_CH0  = (4<<8)|(0),
-  TC4_CH1  = (4<<8)|(1),
-  TC5_CH0  = (5<<8)|(0),
-  TC5_CH1  = (5<<8)|(1),
-#if defined __SAMD21J18A__
-  TC6_CH0  = (6<<8)|(0),
-  TC6_CH1  = (6<<8)|(1),
-  TC7_CH0  = (7<<8)|(0),
-  TC7_CH1  = (7<<8)|(1),
-#endif // __SAMD21J18A__
+  TC0_CH0 = (0<<8)|(0),
+  TC0_CH1 = (0<<8)|(1),
+  TC0_CH2 = (0<<8)|(2),
+  TC0_CH3 = (0<<8)|(3),
+  TC0_CH4 = (0<<8)|(0), 
+  TC0_CH5 = (0<<8)|(1), 
+  TC1_CH0 = (1<<8)|(0),
+  TC1_CH1 = (1<<8)|(1),
+  TC1_CH2 = (1<<8)|(0), 
+  TC1_CH3 = (1<<8)|(1), 
+  TC1_CH4 = (1<<8)|(1), 
+  TC1_CH5 = (1<<8)|(1), 
+  TC2_CH0 = (2<<8)|(0),
+  TC2_CH1 = (2<<8)|(1),
+  TC2_CH2 = (2<<8)|(0), 
+  TC2_CH3 = (2<<8)|(1), 
+  TC2_CH4 = (2<<8)|(1), 
+  TC2_CH5 = (2<<8)|(1), 
 } ETCChannel ;
 
-extern const void* g_apTCInstances[TCC_INST_NUM+TC_INST_NUM] ;
+extern const void* g_apTCInstances[TCC_INST_NUM] ;
 
 #define GetTCNumber( x ) ( (x) >> 8 )
 #define GetTCChannelNumber( x ) ( (x) & 0xff )
@@ -101,42 +92,30 @@ extern const void* g_apTCInstances[TCC_INST_NUM+TC_INST_NUM] ;
 typedef enum _EPWMChannel
 {
   NOT_ON_PWM=-1,
-  PWM0_CH0=TCC0_CH0,
-  PWM0_CH1=TCC0_CH1,
-  PWM0_CH2=TCC0_CH2,
-  PWM0_CH3=TCC0_CH3,
-  PWM0_CH4=TCC0_CH4,
-  PWM0_CH5=TCC0_CH5,
-  PWM0_CH6=TCC0_CH6,
-  PWM0_CH7=TCC0_CH7,
-  PWM1_CH0=TCC1_CH0,
-  PWM1_CH1=TCC1_CH1,
-  PWM1_CH2=TCC1_CH2,
-  PWM1_CH3=TCC1_CH3,
-  PWM2_CH0=TCC2_CH0,
-  PWM2_CH1=TCC2_CH1,
-  PWM2_CH2=TCC2_CH2,
-  PWM2_CH3=TCC2_CH3,
-  PWM3_CH0=TC3_CH0,
-  PWM3_CH1=TC3_CH1,
-  PWM4_CH0=TC4_CH0,
-  PWM4_CH1=TC4_CH1,
-  PWM5_CH0=TC5_CH0,
-  PWM5_CH1=TC5_CH1,
-#if defined __SAMD21J18A__
-  PWM6_CH0=TC6_CH0,
-  PWM6_CH1=TC6_CH1,
-  PWM7_CH0=TC7_CH0,
-  PWM7_CH1=TC7_CH1,
-#endif // __SAMD21J18A__
+  PWM0_CH0=TC0_CH0,
+  PWM0_CH1=TC0_CH1,
+  PWM0_CH2=TC0_CH2,
+  PWM0_CH3=TC0_CH3,
+  PWM0_CH4=TC0_CH4,
+  PWM0_CH5=TC0_CH5,
+  PWM1_CH0=TC1_CH0,
+  PWM1_CH1=TC1_CH1,
+  PWM1_CH2=TC1_CH2,
+  PWM1_CH3=TC1_CH3,
+  PWM2_CH0=TC2_CH0,
+  PWM2_CH1=TC2_CH1,
+  PWM2_CH2=TC2_CH2,
+  PWM2_CH3=TC2_CH3,
 } EPWMChannel ;
 
 typedef enum _EPortType
 {
   NOT_A_PORT=-1,
-/*  PORTA=0,
-  PORTB=1,
-  PORTC=2, */
+  PA=0,
+  PB=1,
+  PC=2, 
+  PD=3,
+  PE=4,
 } EPortType ;
 
 typedef enum
